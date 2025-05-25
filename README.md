@@ -55,6 +55,81 @@ genai-sec10k-insights/
 └── README.md                    # You're here!
 
 ````
+## 🚦 Step-by-Step Walkthrough
+
+Follow this guided walkthrough to experience the full pipeline from server startup to querying a 10-K report:
+
+---
+
+### 🔁 1. Start the FastAPI Server
+
+From the project root, run the backend using:
+
+```bash
+cd backend
+uvicorn app.main:app --reload
+````
+
+Once started, you'll see a **well-formatted terminal output** styled using `rich`, including:
+
+* Project banner
+* Usage instructions
+* Export variable tips
+* A **random 6-digit authentication code**
+
+Example:
+
+```
+🚀 genai-sec10k-insights is running on http://localhost:8000
+🔒 Auth Code: 348215
+🔗 Visit /chat to access the chatbot interface
+```
+
+---
+
+### 🌐 2. Visit the Web App in Your Browser
+
+Open:
+
+```
+http://localhost:8000
+```
+
+You’ll be taken to the **authentication screen** (`auth.html`) which has:
+
+* A minimal design with blurred background
+* An input field for the 6-digit code
+
+Enter the code shown in your terminal and proceed.
+
+---
+
+### 💬 3. Access the Chatbot Interface
+
+Once authenticated, you'll land on the **main chat interface** (`index.html`) where you can:
+
+* Ask any question related to the SEC 10-K reports of the 10 companies
+* View dynamic responses with smooth UI animations
+
+---
+
+### 📥 4. Use a Predefined Prompt
+
+We’ve provided a set of mock prompts in:
+
+```
+notebooks/mock_10k_40_questions.json
+```
+
+Example test prompt:
+
+```json
+{
+  "question": "What does Microsoft report about cybersecurity risks?"
+}
+```
+
+Paste this into the chat input box and submit. You’ll receive a detailed response sourced from the `MSFT_10k.txt` report.
 
 ---
 
