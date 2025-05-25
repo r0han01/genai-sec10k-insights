@@ -89,7 +89,7 @@ genai-sec10k-insights/
 ### 1. Clone the Repo
 
 ```bash
-git clone https://github.com/yourusername/genai-sec10k-insights.git
+git clone https://github.com/r0han01/genai-sec10k-insights.git
 cd genai-sec10k-insights
 ````
 
@@ -144,12 +144,6 @@ The app includes processed 10-K filings from the following companies:
 * Pfizer (PFE)
 * Tesla (TSLA)
 * Walmart (WMT)
-
----
-
-## 📜 License
-
-This project is licensed under the MIT License. See the `LICENSE` file for details.
 
 ## 🛠️ Troubleshooting & Swagger Testing
 
