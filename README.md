@@ -158,6 +158,9 @@ Since this app is built on top of the **actual SEC 10-K filings** from 10 compan
 Just make sure your question is **relevant to the content typically found in 10-K reports** (i.e., risk factors, business overview, financials, strategy, etc.).
 
 Once submitted, your question will be semantically searched across the embedded document chunks, and an accurate answer will be generated based on the most relevant 10-K sources.
+###
+![Screencastfrom2025-05-2509-54-46-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/ba7e619b-463b-4fcf-b65f-5d3a8d975601)
+###
 
 ---
 
