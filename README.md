@@ -1,7 +1,10 @@
-# Financial Filing AI Assistant (Chatbot) !
+<div align="center">
 
-![Screencastfrom2025-05-2510-10-20-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/b6b4568e-f80f-4dd6-9556-dce2333bffc7)
-#
+# Financial Filing AI Assistant (Chatbot) 🚀
+
+<img src="https://github.com/user-attachments/assets/b6b4568e-f80f-4dd6-9556-dce2333bffc7" alt="Demo GIF" />
+
+</div>
 **genai-sec10k-insights** is a full-stack Retrieval-Augmented Generation (RAG) web application that enables users to interactively query and analyze SEC 10-K filings from major companies. The system extracts key insights from long-form financial reports using a semantic search pipeline powered by OpenAI embeddings and a FAISS vector store, all deployed behind a FastAPI backend and custom frontend.
 
 ---
