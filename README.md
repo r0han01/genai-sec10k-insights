@@ -255,6 +255,9 @@ The app includes processed 10-K filings from the following companies:
 ## 🛠️ Troubleshooting & Swagger Testing
 
 If the frontend chatbot interface (`/chat`) does not seem to be working correctly (e.g., blank responses, stuck loading, or CORS errors), you can **directly test the backend API** using the built-in Swagger UI at:
+###
+![Screencastfrom2025-05-2512-06-09-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/990ddaa1-9f8f-4a29-b42a-23eed6b31595)
+###
 
 ```
 
