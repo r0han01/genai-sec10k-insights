@@ -138,8 +138,7 @@ Here’s one you can try immediately:
 }
 ````
 ###
-![Screenshot from 2025-05-25 10-55-23 (1)](https://github.com/user-attachments/assets/b5282056-89be-43ba-b6a8-0a7c67cd61da)
-
+![main](https://github.com/user-attachments/assets/7768f962-6e0f-4c98-82ac-15e98b5b8316)
 ###
 
 📌 **Important Note:**
