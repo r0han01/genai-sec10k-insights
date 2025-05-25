@@ -157,13 +157,83 @@ The app includes processed 10-K filings from the following companies:
 This project is licensed under the MIT License. See the `LICENSE` file for details.
 
 ```
+## 🛠️ Troubleshooting & Swagger Testing
+
+If the frontend chatbot interface (`/chat`) does not seem to be working correctly (e.g., blank responses, stuck loading, or CORS errors), you can **directly test the backend API** using the built-in Swagger UI at:
+
+```
+
+http://localhost:8000/docs
+
+````
+
+### ✅ Why Use This?
+
+- Confirms whether the backend and RAG pipeline are functioning correctly.
+- Helps isolate whether issues originate from the **frontend** or **backend**.
+- Allows developers to quickly debug request/response flow without modifying UI.
 
 ---
 
-Let me know if you'd like:
-- A **shortened README** version for a landing page
-- A **demo GIF or image placeholder**
-- The access code system explained as a **separate doc (`AUTH.md`)**
+### 🧪 How to Test via Swagger
 
-Ready to drop into your GitHub as-is.
-```
+1. Make sure your FastAPI backend is running:
+   ```bash
+   uvicorn app.main:app --reload
+
+2. Open your browser and go to:
+
+   ```
+   http://localhost:8000/docs
+   ```
+
+3. Scroll down to the `POST /ask` endpoint.
+
+4. Click on **`Try it out`**.
+
+5. In the request body, paste the following prompt:
+
+   ```json
+   {
+     "question": "What does Microsoft report about cybersecurity risks?"
+   }
+   ```
+
+6. Click **Execute**.
+
+7. You should receive a structured JSON response:
+
+   ```json
+   {
+     "answer": "Microsoft discusses cybersecurity risks related to...",
+     "sources": [
+       "MSFT_10k.txt"
+     ]
+   }
+   ```
+
+---
+
+### 🧩 If It Works Here but Not in Frontend
+
+If the Swagger `/ask` test returns valid responses but the frontend (`/chat`) does not:
+
+* ✅ It means your **backend RAG pipeline is working fine**.
+* ❌ The issue is likely in:
+
+  * `frontend/app.js` (JavaScript fetch logic)
+  * CORS configuration (make sure backend allows frontend origin)
+  * Cookie or auth state mismatch
+
+---
+
+### 🔧 Recommended Fixes
+
+* Check the console in browser dev tools (`F12`) for network or JS errors.
+* Verify you're logged in with the correct 6-digit code.
+* Ensure `fetch` requests from the frontend hit the same `/ask` endpoint with correct `Content-Type` headers.
+
+---
+
+By using the Swagger UI, you can verify your backend independently and streamline debugging efforts.
+
