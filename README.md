@@ -1,8 +1,3 @@
-Thank you. Based on your full directory structure and actual implementation, here is a **professional, clean, and complete `README.md`** focused **only on your full-stack web application** – no mentions of Traderverse, LangGraph, or other unrelated tasks.
-
----
-
-```markdown
 # genai-sec10k-insights
 
 **genai-sec10k-insights** is a full-stack Retrieval-Augmented Generation (RAG) web application that enables users to interactively query and analyze SEC 10-K filings from major companies. The system extracts key insights from long-form financial reports using a semantic search pipeline powered by OpenAI embeddings and a FAISS vector store, all deployed behind a FastAPI backend and custom frontend.
