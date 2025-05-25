@@ -333,3 +333,76 @@ If the Swagger `/ask` test returns valid responses but the frontend (`/chat`) do
 
 By using the Swagger UI, you can verify your backend independently and streamline debugging efforts.
 
+## 🧯 Stopping Docker Containers Safely
+
+If you're running this app via Docker and need to stop it manually (especially if `docker stop` doesn't work or Docker is unresponsive), follow these steps:
+
+---
+
+### 🔍 1. List All Docker-Related Processes
+
+Use `ps` and `grep` to identify Docker processes:
+
+```bash
+ps aux | grep docker
+````
+
+Sample output might include:
+
+```
+root     1234  ... /usr/bin/dockerd
+root     2345  ... docker-containerd
+user     3456  ... docker-proxy ...
+```
+
+Avoid killing core Docker daemons like `dockerd` or `containerd`.
+
+---
+
+### 🔪 2. Kill the Container Process by PID (Preferred)
+
+Find the PID of the container process:
+
+```bash
+docker inspect --format '{{.State.Pid}}' genai-sec10k-container
+```
+
+Then stop it forcefully:
+
+```bash
+sudo kill -9 <PID>
+```
+
+Replace `<PID>` with the number returned above.
+
+---
+
+### 💥 3. Kill All Docker Container Processes (Advanced)
+
+If you're confident and want to kill all Docker-related processes manually:
+
+```bash
+ps aux | grep docker | grep -v grep
+```
+
+Note the PIDs in column 2, then:
+
+```bash
+sudo kill -9 <pid1> <pid2> ...
+```
+
+⚠️ **Warning:** Only do this if you know what you're killing. Terminating Docker system processes may disrupt all containers or require restarting the Docker service.
+
+---
+
+### ✅ One-Liner (Recommended)
+
+To quickly kill the container process cleanly:
+
+```bash
+sudo kill -9 $(docker inspect --format '{{.State.Pid}}' genai-sec10k-container)
+```
+
+This is the safest way to force-stop just the container, without impacting Docker itself.
+
+
