@@ -113,23 +113,39 @@ Once authenticated, you'll land on the **main chat interface** (`index.html`) wh
 
 ---
 
-### 📥 4. Use a Predefined Prompt
 
-We’ve provided a set of mock prompts in:
+### 📥 4. Use an Example Prompt (or Ask Your Own)
+
+To help you get started, we’ve provided a few **sample prompts** in:
 
 ```
-notebooks/mock_10k_40_questions.json
-```
 
-Example test prompt:
+notebooks/mock\_10k\_40\_questions.json
+
+````
+
+Here’s one you can try immediately:
 
 ```json
 {
   "question": "What does Microsoft report about cybersecurity risks?"
 }
-```
+````
 
-Paste this into the chat input box and submit. You’ll receive a detailed response sourced from the `MSFT_10k.txt` report.
+📌 **Important Note:**
+These are just **example prompts** — the chatbot is **not limited** to answering only those.
+
+Since this app is built on top of the **actual SEC 10-K filings** from 10 companies (AAPL, MSFT, TSLA, AMZN, etc.), you can ask **any meaningful financial or business-related question** that could be answered from those filings.
+
+✅ For example:
+
+* "What does Apple say about supply chain risks?"
+* "How does Amazon describe its revenue streams?"
+* "What litigation risks does Meta report?"
+
+Just make sure your question is **relevant to the content typically found in 10-K reports** (i.e., risk factors, business overview, financials, strategy, etc.).
+
+Once submitted, your question will be semantically searched across the embedded document chunks, and an accurate answer will be generated based on the most relevant 10-K sources.
 
 ---
 
