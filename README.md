@@ -413,4 +413,145 @@ sudo kill -9 $(docker inspect --format '{{.State.Pid}}' genai-sec10k-container)
 
 This is the safest way to force-stop just the container, without impacting Docker itself.
 
+## 🚀 Deployment on AWS EC2
+
+You can deploy this full-stack RAG-based chatbot on an AWS EC2 instance using Docker. This section includes a full guide and real-world fixes for issues you might encounter.
+
+---
+
+### 🧱 Requirements
+
+- AWS Account
+- EC2 access with security group allowing:
+  - Port **22** (SSH)
+  - Port **8000** (FastAPI)
+- SSH key pair (`.pem` file)
+- `Docker` and `Git` installed on the EC2 instance
+- OpenAI API Key
+
+---
+
+### 🔧 1. Launch EC2 Instance
+
+- AMI: **Amazon Linux 2023**
+- Type: `t2.micro` (Free Tier eligible)
+- Enable auto-assign public IP
+- Security group must include:
+  - SSH (port 22) → `0.0.0.0/0`
+  - HTTP (port 80) → `0.0.0.0/0` *(optional)*
+  - Custom TCP (port 8000) → `0.0.0.0/0`
+
+---
+
+### 🔐 2. Connect via SSH
+
+```bash
+ssh -i /path/to/genai-key.pem ec2-user@<your-ec2-public-ip>
+````
+
+> If you get “Too many authentication failures”, use:
+
+```bash
+ssh -i /path/to/genai-key.pem -o IdentitiesOnly=yes ec2-user@<your-ec2-public-ip>
+```
+
+---
+
+### 🐳 3. Install Docker and Git on EC2
+
+```bash
+sudo yum update -y
+sudo yum install docker git -y
+sudo service docker start
+sudo usermod -aG docker ec2-user
+exit
+```
+
+Re-login after the last step to activate Docker group changes.
+
+---
+
+### 📦 4. Clone the Repository
+
+```bash
+git clone https://github.com/r0han01/genai-sec10k-insights.git
+cd genai-sec10k-insights
+```
+
+---
+
+### 📁 5. Upload Your `data/` Folder (FAISS index + 10-K chunks)
+
+On your **local machine**, run:
+
+```bash
+scp -i /path/to/genai-key.pem -o IdentitiesOnly=yes -r \
+~/CoursePractice/aiProject/genai-sec10k-insights/data \
+ec2-user@<your-ec2-public-ip>:~/genai-sec10k-insights/
+```
+
+> This avoids needing to rebuild the vector store on EC2.
+
+---
+
+### 🧪 6. Ensure Your Dockerfile Includes the `data/` Directory
+
+Make sure this line in `Dockerfile` is uncommented:
+
+```dockerfile
+COPY data ./data
+```
+
+---
+
+### 🧱 7. Build the Docker Image
+
+```bash
+docker build -t genai-sec10k-app .
+```
+
+---
+
+### 🔑 8. Run the Container (Foreground with API Key)
+
+```bash
+docker run -p 8000:8000 \
+  --name genai-sec10k-container \
+  -e OPENAI_API_KEY=your-key-here \
+  genai-sec10k-app
+```
+
+> This runs the app in the foreground so you can see logs and the auth code.
+
+---
+
+### 🌐 9. Access Your Web App
+
+Open your browser:
+
+```
+http://<your-ec2-public-ip>:8000
+```
+
+* Enter the 6-digit code shown in your EC2 terminal
+* You’ll be redirected to the chatbot interface
+* Ask any question like:
+
+```text
+What does Microsoft report about cybersecurity risks?
+```
+
+---
+
+### 🧩 Common Issues & Fixes
+
+| Problem                            | Fix                                                                |
+| ---------------------------------- | ------------------------------------------------------------------ |
+| `Too many authentication failures` | Use `-o IdentitiesOnly=yes` with `ssh` or `scp`                    |
+| `COPY data ./data` fails           | Make sure `data/` exists locally and isn’t ignored by `.gitignore` |
+| App runs but doesn't answer        | You're missing the FAISS vector index — upload your `data/` folder |
+| Input fields zoom on mobile        | Set `font-size: 16px` in `styles.css` for all input fields         |
+
+
+
 
