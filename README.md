@@ -84,7 +84,9 @@ Example:
 🔒 Auth Code: 348215
 🔗 Visit /chat to access the chatbot interface
 ```
-
+###
+![Screenshot from 2025-05-25 09-46-35 (1)](https://github.com/user-attachments/assets/c69cafca-3bbe-4720-bf36-bf7ca1597bbf)
+###
 ---
 
 ### 🌐 2. Visit the Web App in Your Browser
@@ -101,7 +103,9 @@ You’ll be taken to the **authentication screen** (`auth.html`) which has:
 * An input field for the 6-digit code
 
 Enter the code shown in your terminal and proceed.
-
+###
+![Screenshot from 2025-05-25 10-55-23](https://github.com/user-attachments/assets/afc7495c-c0e2-4104-a73b-74e77629b3db)
+###
 ---
 
 ### 💬 3. Access the Chatbot Interface
@@ -110,7 +114,9 @@ Once authenticated, you'll land on the **main chat interface** (`index.html`) wh
 
 * Ask any question related to the SEC 10-K reports of the 10 companies
 * View dynamic responses with smooth UI animations
-
+###
+![ScreenShot Tool -20250525111020](https://github.com/user-attachments/assets/8b06117a-7287-480c-bfc4-cc844106de2d)
+###
 ---
 
 
@@ -131,10 +137,16 @@ Here’s one you can try immediately:
   "question": "What does Microsoft report about cybersecurity risks?"
 }
 ````
+###
+![Screenshot from 2025-05-25 10-55-23 (1)](https://github.com/user-attachments/assets/b5282056-89be-43ba-b6a8-0a7c67cd61da)
+
+###
 
 📌 **Important Note:**
 These are just **example prompts** — the chatbot is **not limited** to answering only those.
-
+###
+![Screenshot from 2025-05-25 09-49-41 (1)](https://github.com/user-attachments/assets/752b7a30-e6d0-4893-90a8-7479f05e6b16)
+###
 Since this app is built on top of the **actual SEC 10-K filings** from 10 companies (AAPL, MSFT, TSLA, AMZN, etc.), you can ask **any meaningful financial or business-related question** that could be answered from those filings.
 
 ✅ For example:
