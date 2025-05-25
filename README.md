@@ -156,7 +156,6 @@ The app includes processed 10-K filings from the following companies:
 
 This project is licensed under the MIT License. See the `LICENSE` file for details.
 
-```
 ## 🛠️ Troubleshooting & Swagger Testing
 
 If the frontend chatbot interface (`/chat`) does not seem to be working correctly (e.g., blank responses, stuck loading, or CORS errors), you can **directly test the backend API** using the built-in Swagger UI at:
